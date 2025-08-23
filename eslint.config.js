@@ -19,6 +19,7 @@ module.exports = defineConfig([
     rules: {
       curly: ['error', 'multi'],
       'prettier/prettier': 'error',
+      'react/display-name': 'off',
       'react/react-in-jsx-scope': 'off',
       'react-native/no-unused-styles': 2,
       'simple-import-sort/imports': 'error',
