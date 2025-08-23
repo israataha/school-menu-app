@@ -6,7 +6,7 @@ export const MenuCard = ({ item }: { item: Day }) => {
   return (
     <Pressable style={styles.card}>
       <Text style={styles.date}>
-        {new Date(item.date).toLocaleDateString('en-US', {
+        {new Date(`${item.date}T00:00:00.000`).toLocaleDateString('en-US', {
           weekday: 'short',
           month: 'short',
           day: 'numeric',
@@ -16,12 +16,13 @@ export const MenuCard = ({ item }: { item: Day }) => {
         <Text style={{ fontStyle: 'italic' }}>There is currently nothing on the menu today.</Text>
       ) : (
         item.menu_items.map((item, index) => {
-          if (item.is_section_title)
+          if (item.is_section_title || item.is_holiday)
             return (
               <Text key={index} style={styles.section_title}>
                 {item.text}
               </Text>
             );
+
           if (!item.food) return null;
           return (
             <Text key={index} style={{ paddingVertical: 2 }}>

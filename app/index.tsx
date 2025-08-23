@@ -9,6 +9,7 @@ export default function Index() {
 
   if (isError) return <Text>{error.message}</Text>;
   if (isPending) return <Text>Loading...</Text>;
+  if (data.days.length === 0) return <Text>No menu available for this week.</Text>;
 
   return (
     <View style={styles.container}>
