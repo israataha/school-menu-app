@@ -13,6 +13,7 @@ export type MenuItem = {
   is_section_title: boolean;
   is_holiday: boolean;
   no_line_break: boolean;
+  position: number;
   text: string;
   food: Food | null;
   category: string | null;

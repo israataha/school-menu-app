@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { Day, Menu } from './types';
 
@@ -6,7 +6,7 @@ const MENU_URL = 'https://dbqschools.api.nutrislice.com/menu/api/weeks/school/ei
 
 export function useFetchMenu(date: Date) {
   return useQuery<Menu>({
-    queryKey: [date.toISOString().split('T')[0]],
+    queryKey: ['menu'], //[date.toISOString().split('T')[0]],
     queryFn: async () => {
       const response = await fetch(`${MENU_URL}/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/`);
       return await response.json();
@@ -18,3 +18,9 @@ export function useFetchMenu(date: Date) {
     }),
   });
 }
+
+export const useMenuData = (date: string) => {
+  const queryClient = useQueryClient();
+  const data = queryClient.getQueryData<Menu>(['menu'])?.days.find(day => day.date === date);
+  return data;
+};

@@ -27,6 +27,7 @@ describe('MenuCard', () => {
               is_section_title: false,
               no_line_break: false,
               is_holiday: true,
+              position: 0,
               text: 'Labor Day',
               food: null,
               category: null,
@@ -51,6 +52,7 @@ describe('MenuCard', () => {
               is_section_title: true,
               no_line_break: false,
               is_holiday: false,
+              position: 0,
               text: 'Entrees',
               food: null,
               category: null,
@@ -75,6 +77,7 @@ describe('MenuCard', () => {
               is_section_title: false,
               no_line_break: false,
               is_holiday: false,
+              position: 0,
               text: '',
               food: {
                 name: 'Chicken Tenders',

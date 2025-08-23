@@ -15,6 +15,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: true,
           no_line_break: false,
+          position: 0,
           text: 'Labor Day',
           food: null,
           category: null,
@@ -30,6 +31,7 @@ export const menu_data: Menu = {
           is_section_title: true,
           is_holiday: false,
           no_line_break: false,
+          position: 0,
           text: 'Pick One Entree',
           food: null,
           category: null,
@@ -40,6 +42,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 1,
           text: '',
           food: {
             name: 'Hot Dog on a Bun',
@@ -92,6 +95,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 2,
           text: '',
           food: {
             name: 'Deli Ham and Cheese  on a Bun',
@@ -144,6 +148,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 3,
           text: '',
           food: {
             name: "Smucker's SB & J",
@@ -185,6 +190,7 @@ export const menu_data: Menu = {
           is_section_title: true,
           is_holiday: false,
           no_line_break: false,
+          position: 4,
           text: 'Fruit & Vegetable Sides',
           food: null,
           category: null,
@@ -195,6 +201,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 5,
           text: '',
           food: {
             name: 'Steamed Corn',
@@ -243,6 +250,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 6,
           text: '',
           food: {
             name: 'Fresh Broccoli',
@@ -291,6 +299,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 7,
           text: '',
           food: {
             name: 'Fresh Sliced Apples',
@@ -344,6 +353,7 @@ export const menu_data: Menu = {
           is_section_title: true,
           is_holiday: false,
           no_line_break: false,
+          position: 0,
           text: 'Pick One Entree',
           food: null,
           category: null,
@@ -354,6 +364,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 1,
           text: '',
           food: {
             name: 'Pancakes',
@@ -402,6 +413,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: true,
+          position: 2,
           text: 'w/',
           food: null,
           category: null,
@@ -412,6 +424,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: true,
+          position: 3,
           text: '',
           food: {
             name: 'Pork Sausage Patty',
@@ -460,6 +473,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 4,
           text: '',
           food: {
             name: 'SB & J Sandwich w/ String Cheese',
@@ -512,6 +526,7 @@ export const menu_data: Menu = {
           is_section_title: true,
           is_holiday: false,
           no_line_break: false,
+          position: 5,
           text: 'Fruit & Vegetable Sides',
           food: null,
           category: null,
@@ -522,6 +537,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 6,
           text: '',
           food: {
             name: 'Cucumber Slices',
@@ -571,6 +587,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 7,
           text: '',
           food: {
             name: 'Potato Triangle',
@@ -618,6 +635,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 8,
           text: '',
           food: {
             name: 'Orange Juice',
@@ -670,6 +688,7 @@ export const menu_data: Menu = {
           is_section_title: true,
           is_holiday: false,
           no_line_break: false,
+          position: 0,
           text: 'Pick One Entree',
           food: null,
           category: null,
@@ -680,6 +699,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 1,
           text: '',
           food: {
             name: 'Cheese Quesadilla',
@@ -733,6 +753,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 2,
           text: '',
           food: {
             name: 'Deli Turkey & Cheese  on a Bun',
@@ -785,6 +806,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 3,
           text: '',
           food: {
             name: "Smucker's SB & J",
@@ -826,6 +848,7 @@ export const menu_data: Menu = {
           is_section_title: true,
           is_holiday: false,
           no_line_break: false,
+          position: 4,
           text: 'Fruit & Vegetable Sides',
           food: null,
           category: null,
@@ -836,6 +859,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 5,
           text: '',
           food: {
             name: 'Refried Beans',
@@ -883,6 +907,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 6,
           text: '',
           food: {
             name: 'Celery Sticks',
@@ -931,6 +956,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 7,
           text: '',
           food: {
             name: 'Cinnamon Applesauce',
@@ -983,6 +1009,7 @@ export const menu_data: Menu = {
           is_section_title: true,
           is_holiday: false,
           no_line_break: false,
+          position: 0,
           text: 'Pick One Entree',
           food: null,
           category: null,
@@ -993,6 +1020,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 1,
           text: '',
           food: {
             name: 'Homemade Spaghetti',
@@ -1045,6 +1073,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: true,
+          position: 2,
           text: 'w/',
           food: null,
           category: null,
@@ -1055,6 +1084,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: true,
+          position: 3,
           text: '',
           food: {
             name: 'Garlic Breadstick',
@@ -1102,6 +1132,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 4,
           text: '',
           food: {
             name: 'SB & J Sandwich w/ String Cheese',
@@ -1154,6 +1185,7 @@ export const menu_data: Menu = {
           is_section_title: true,
           is_holiday: false,
           no_line_break: false,
+          position: 5,
           text: 'Fruit & Vegetable Sides',
           food: null,
           category: null,
@@ -1164,6 +1196,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 6,
           text: '',
           food: {
             name: 'Steamed Carrots',
@@ -1212,6 +1245,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 7,
           text: '',
           food: {
             name: 'Fresh Green Beans',
@@ -1259,6 +1293,7 @@ export const menu_data: Menu = {
           is_section_title: false,
           is_holiday: false,
           no_line_break: false,
+          position: 8,
           text: '',
           food: {
             name: 'Fresh Grapes',

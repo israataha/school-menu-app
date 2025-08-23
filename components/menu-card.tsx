@@ -1,17 +1,27 @@
-import { Pressable, StyleSheet, Text } from 'react-native';
+import { router } from 'expo-router';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { Day } from '@/api/types';
 
+import { Icon } from './icon';
+
 export const MenuCard = ({ item }: { item: Day }) => {
   return (
-    <Pressable style={styles.card}>
-      <Text style={styles.date}>
-        {new Date(`${item.date}T00:00:00.000`).toLocaleDateString('en-US', {
-          weekday: 'short',
-          month: 'short',
-          day: 'numeric',
-        })}
-      </Text>
+    <Pressable
+      accessibilityHint="Navigates to your menu detail page"
+      testID={`menu-card-${item.date}`}
+      style={styles.card}
+      onPress={() => router.push(`/detail/${item.date}`)}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Text style={styles.date}>
+          {new Date(`${item.date}T00:00:00.000`).toLocaleDateString('en-US', {
+            weekday: 'short',
+            month: 'short',
+            day: 'numeric',
+          })}
+        </Text>
+        <Icon type="Ionicons" name="chevron-forward-outline" size={18} color="black" />
+      </View>
       {item.menu_items.length === 0 ? (
         <Text style={{ fontStyle: 'italic' }}>There is currently nothing on the menu today.</Text>
       ) : (

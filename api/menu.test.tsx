@@ -1,16 +1,19 @@
 import { renderHook, waitFor } from '@testing-library/react-native';
 import { http, HttpResponse } from 'msw';
 
+import { menu_data } from '@/test/mock-data';
 import { server } from '@/test/setup';
-import { createWrapper } from '@/test/utils';
+import { createWrapper, testQueryClient } from '@/test/utils';
 
-import { useFetchMenu } from './menu';
-
+import { useFetchMenu, useMenuData } from './menu';
 describe('useFetchMenu', () => {
-  it('should return a success response', async () => {
+  it('should fetch menu data', async () => {
     const { result } = renderHook(() => useFetchMenu(new Date('2025-09-01')), { wrapper: createWrapper() });
 
     await waitFor(() => expect(result.current.isSuccess).toBe(true));
+
+    expect(result.current.error).toBeNull();
+    expect(result.current.data).toBeDefined();
   });
 
   it('should throw an error when the API returns an error', async () => {
@@ -22,6 +25,8 @@ describe('useFetchMenu', () => {
     const { result } = renderHook(() => useFetchMenu(new Date('2025-09-01')), { wrapper: createWrapper() });
 
     await waitFor(() => expect(result.current.isError).toBe(true));
+    expect(result.current.error).toBeDefined();
+    expect(result.current.data).toBeUndefined();
   });
 
   it('should filter out days with no menu items', async () => {
@@ -39,5 +44,20 @@ describe('useFetchMenu', () => {
     expect(days?.some(day => day.date === '2025-09-04')).toBe(true);
     expect(days?.some(day => day.date === '2025-09-05')).toBe(true);
     expect(days?.some(day => day.date === '2025-09-06')).toBe(false);
+  });
+});
+
+describe('useMenuData', () => {
+  it('should return data', async () => {
+    testQueryClient.setQueryData(['menu'], menu_data);
+    const { result } = renderHook(() => useMenuData('2025-09-01'), { wrapper: createWrapper() });
+
+    await waitFor(() => expect(result.current).toBeDefined());
+  });
+
+  it('should return null if there is no data for that date', async () => {
+    const { result } = renderHook(() => useMenuData('2025-09-10'), { wrapper: createWrapper() });
+
+    await waitFor(() => expect(result.current).toBeUndefined());
   });
 });

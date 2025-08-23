@@ -10,6 +10,7 @@ export default function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <Stack>
         <Stack.Screen name="index" options={{ headerTitle: 'School Menu' }} />
+        <Stack.Screen name="detail/[date]" options={{ headerBackTitle: 'Back', headerTitle: 'Menu Details' }} />
       </Stack>
     </QueryClientProvider>
   );
