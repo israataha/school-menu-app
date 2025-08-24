@@ -14,7 +14,7 @@ export const MenuCard = ({ item }: { item: Day }) => {
       accessibilityHint="Navigates to the menu detail page"
       testID={`menu-card-${item.date}`}
       style={styles.card}
-      onPress={() => router.push(`/detail/${item.date}`)}>
+      onPress={() => router.push(`/menu-details/${item.date}`)}>
       <View style={styles.dateContainer}>
         <View accessibilityLabel="date">
           <Text style={styles.date}>{weekday}</Text>
