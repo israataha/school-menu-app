@@ -1,14 +1,26 @@
 import { MenuItem } from '@/api/types';
 
-export const formatDate = (date: string, options?: Intl.DateTimeFormatOptions) =>
-  new Date(`${date}T00:00:00.000`).toLocaleDateString(
-    'en-US',
-    options || {
-      weekday: 'short',
-      month: 'short',
-      day: 'numeric',
-    },
-  );
+export const formatDate = (dateString: string, options?: Intl.DateTimeFormatOptions) => {
+  const date = new Date(`${dateString}T00:00:00.000`);
+
+  const weekday = date.toLocaleDateString('en-US', {
+    weekday: options?.weekday || 'long',
+  });
+
+  const month = date.toLocaleDateString('en-US', {
+    month: options?.month || 'long',
+  });
+
+  const day = date.toLocaleDateString('en-US', {
+    day: options?.day || 'numeric',
+  });
+
+  const year = date.toLocaleDateString('en-US', {
+    year: options?.year || 'numeric',
+  });
+
+  return { weekday, month, day, year };
+};
 
 export const transformMenuItems = (menuItems: MenuItem[]) => {
   if (menuItems.length === 0) return {};

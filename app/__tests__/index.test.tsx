@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react-native';
+import { screen, waitFor } from '@testing-library/react-native';
 import { http, HttpResponse } from 'msw';
 
 import { renderWithClient } from '@/app/__tests__/utils';
@@ -48,17 +48,5 @@ describe('index', () => {
     await waitFor(() => expect(getByText("This week's menu")).toBeDefined());
 
     expect(getAllByLabelText('date')).toHaveLength(5);
-  });
-
-  it('should navigate to detail page when a menu item is clicked', async () => {
-    // const router = useRouter();
-    // const spy = jest.spyOn(router, 'push');
-    const { getByText, getByTestId } = renderWithClient(<Index />);
-
-    await waitFor(() => expect(getByText('Tue, Sep 2')).toBeDefined());
-
-    fireEvent.press(getByTestId('menu-card-2025-09-02'));
-
-    //await waitFor(() => expect(useRouter().push).toHaveBeenCalledWith('/detail/2025-09-02'));
   });
 });

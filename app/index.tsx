@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import { EmptyState, ErrorState, LoadingIndicator, MenuCard } from '@/components';
+import { colors } from '@/styles';
 
 import { useFetchMenu } from '../api';
 
@@ -40,6 +41,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: colors.background,
   },
 });

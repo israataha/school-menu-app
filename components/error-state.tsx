@@ -1,6 +1,8 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { colors } from '@/styles';
+
 export const ErrorState = ({ message, onRetry }: { message: string; onRetry?: () => void }) => {
   return (
     <View accessibilityLabel="error" style={styles.container}>
@@ -22,7 +24,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 32,
-    backgroundColor: '#F9FAFB',
+    backgroundColor: colors.background,
     gap: 16,
   },
   title: {
@@ -33,14 +35,14 @@ const styles = StyleSheet.create({
   },
   message: {
     fontSize: 16,
-    color: '#6B7280',
+    color: colors.textSecondary,
     textAlign: 'center',
     lineHeight: 24,
   },
   retryButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#3B82F6',
+    backgroundColor: colors.primary,
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 8,

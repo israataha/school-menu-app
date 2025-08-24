@@ -3,20 +3,26 @@ import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { Day } from '@/api/types';
+import { colors } from '@/styles';
 import { formatDate } from '@/utils';
 
 export const MenuCard = ({ item }: { item: Day }) => {
+  const { weekday, month, day } = formatDate(item.date);
+
   return (
     <Pressable
-      accessibilityHint="Navigates to your menu detail page"
+      accessibilityHint="Navigates to the menu detail page"
       testID={`menu-card-${item.date}`}
       style={styles.card}
       onPress={() => router.push(`/detail/${item.date}`)}>
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Text accessibilityLabel="date" style={styles.date}>
-          {formatDate(item.date)}
-        </Text>
-        <Ionicons name="chevron-forward-outline" size={18} color="black" />
+      <View style={styles.dateContainer}>
+        <View accessibilityLabel="date">
+          <Text style={styles.date}>{weekday}</Text>
+          <Text style={{ fontSize: 14, color: colors.textSecondary, fontStyle: 'italic' }}>
+            {month} {day}
+          </Text>
+        </View>
+        <Ionicons name="chevron-forward-outline" size={18} color="#6B7280" />
       </View>
       {item.menu_items.length === 0 ? (
         <Text style={{ fontStyle: 'italic' }}>There is currently nothing on the menu today.</Text>
@@ -34,7 +40,7 @@ export const MenuCard = ({ item }: { item: Day }) => {
 
           if (!item.food) return null;
           return (
-            <Text key={index} style={{ paddingVertical: 2 }}>
+            <Text key={index} style={{ lineHeight: 20, color: colors.textSecondary }}>
               {item.food.name}
             </Text>
           );
@@ -46,7 +52,7 @@ export const MenuCard = ({ item }: { item: Day }) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: 'white',
+    backgroundColor: colors.card,
     padding: 16,
     marginBottom: 20,
     borderRadius: 12,
@@ -56,6 +62,21 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
-  date: { fontWeight: '600', fontSize: 16, marginBottom: 8 },
-  section_title: { fontWeight: '600', fontSize: 14, marginTop: 8 },
+  dateContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+  date: {
+    fontWeight: '600',
+    fontSize: 18,
+    lineHeight: 22,
+    fontStyle: 'italic',
+  },
+  section_title: {
+    fontWeight: '600',
+    fontSize: 14,
+    marginTop: 8,
+  },
 });

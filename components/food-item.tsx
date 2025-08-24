@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import { MenuItem } from '@/api/types';
+import { colors } from '@/styles';
 
 export const FoodItem = ({ item }: { item: MenuItem }) => {
   if (!item.food) return null;
@@ -36,7 +37,7 @@ export const FoodItem = ({ item }: { item: MenuItem }) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: 'white',
+    backgroundColor: colors.card,
     padding: 16,
     marginBottom: 20,
     borderRadius: 12,
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   caloriesBadge: {
-    backgroundColor: '#3B82F6',
+    backgroundColor: colors.primary,
     paddingHorizontal: 8,
     paddingVertical: 2,
     borderRadius: 12,
@@ -71,10 +72,14 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   description: {
-    paddingBottom: 4,
+    paddingBottom: 8,
+    fontSize: 12,
+    color: colors.textSecondary,
   },
   myplateIcons: {
-    paddingBottom: 4,
+    paddingBottom: 8,
+    fontSize: 12,
+    fontStyle: 'italic',
   },
   nutritionInfo: {
     fontSize: 12,
