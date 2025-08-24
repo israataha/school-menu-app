@@ -1,4 +1,4 @@
-import { fireEvent, waitFor } from '@testing-library/react-native';
+import { fireEvent, screen, waitFor } from '@testing-library/react-native';
 import { http, HttpResponse } from 'msw';
 
 import { renderWithClient } from '@/app/__tests__/utils';
@@ -37,14 +37,17 @@ describe('index', () => {
 
     const { getByText } = renderWithClient(<Index />);
 
-    await waitFor(() => expect(getByText('No menu available for this week.')).toBeDefined());
+    await waitFor(() => expect(getByText('No menu available for this week')).toBeDefined());
+
+    expect(screen.queryByLabelText('date')).toBeNull();
   });
 
   it('should render list of menu items', async () => {
-    const { getByText } = renderWithClient(<Index />);
+    const { getByText, getAllByLabelText } = renderWithClient(<Index />);
 
-    // TODO: Test that there are 5 cards on the screen
-    await waitFor(() => expect(getByText('Mon, Sep 1')).toBeDefined());
+    await waitFor(() => expect(getByText("This week's menu")).toBeDefined());
+
+    expect(getAllByLabelText('date')).toHaveLength(5);
   });
 
   it('should navigate to detail page when a menu item is clicked', async () => {

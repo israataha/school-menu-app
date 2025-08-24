@@ -6,7 +6,7 @@ const MENU_URL = 'https://dbqschools.api.nutrislice.com/menu/api/weeks/school/ei
 
 export function useFetchMenu(date: Date) {
   return useQuery<Menu>({
-    queryKey: ['menu'], //[date.toISOString().split('T')[0]],
+    queryKey: ['menu', date.toISOString().split('T')[0]],
     queryFn: async () => {
       const response = await fetch(`${MENU_URL}/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/`);
       return await response.json();
