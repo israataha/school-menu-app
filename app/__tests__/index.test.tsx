@@ -23,9 +23,9 @@ describe('index', () => {
       }),
     );
 
-    const { getByText } = renderWithClient(<Index />);
+    const { getByLabelText } = renderWithClient(<Index />);
 
-    await waitFor(() => expect(getByText('Failed to fetch')).toBeDefined());
+    await waitFor(() => expect(getByLabelText('error')).toBeDefined());
   });
 
   it('should render a message when there is no menu data', async () => {

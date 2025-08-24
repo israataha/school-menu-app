@@ -49,7 +49,7 @@ describe('useFetchMenu', () => {
 
 describe('useMenuData', () => {
   it('should return data', async () => {
-    testQueryClient.setQueryData(['menu'], menu_data);
+    testQueryClient.setQueryData(['menu', '2025-09-01'], menu_data);
     const { result } = renderHook(() => useMenuData('2025-09-01'), { wrapper: createWrapper() });
 
     await waitFor(() => expect(result.current).toBeDefined());

@@ -12,7 +12,7 @@ export default function Detail() {
   const data = useMenuData('2025-08-26');
 
   return (
-    <ScrollView style={{ padding: 20 }}>
+    <ScrollView style={{ padding: 20, backgroundColor: '#F9FAFB' }}>
       <Text style={{ fontWeight: '600', fontSize: 20, alignSelf: 'center' }}>
         {formatDate(date, { weekday: 'long', month: 'short', day: 'numeric' })}
       </Text>

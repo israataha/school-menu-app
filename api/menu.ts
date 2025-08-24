@@ -21,6 +21,6 @@ export function useFetchMenu(date: Date) {
 
 export const useMenuData = (date: string) => {
   const queryClient = useQueryClient();
-  const data = queryClient.getQueryData<Menu>(['menu'])?.days.find(day => day.date === date);
+  const data = queryClient.getQueryData<Menu>(['menu', date])?.days.find(day => day.date === date);
   return data;
 };
