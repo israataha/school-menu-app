@@ -27,11 +27,7 @@ export default function Index() {
         refreshing={isRefetching}
         onRefresh={refetch}
         ListEmptyComponent={<EmptyState message="No menu available for this week" />}
-        ListHeaderComponent={
-          <Text style={{ fontWeight: '600', fontSize: 16, marginBottom: 8, alignSelf: 'center' }}>
-            {"This week's menu"}
-          </Text>
-        }
+        ListHeaderComponent={<Text style={styles.header}>{"This week's menu"}</Text>}
       />
     </View>
   );
@@ -42,5 +38,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: colors.background,
+  },
+  header: {
+    fontWeight: '600',
+    fontSize: 16,
+    marginBottom: 12,
+    alignSelf: 'center',
   },
 });

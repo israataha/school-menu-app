@@ -14,13 +14,13 @@ export default function Detail() {
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={{ fontWeight: '600', fontSize: 18, alignSelf: 'center', marginBottom: 10 }}>
+      <Text style={styles.date}>
         {weekday}, {month} {day}
       </Text>
       {data?.menu_items.map((item, index) => {
         if (item.is_section_title || item.is_holiday)
           return (
-            <Text key={index} style={{ fontWeight: '600', fontSize: 16, paddingVertical: 10 }}>
+            <Text key={index} style={styles.section_title}>
               {item.text}
             </Text>
           );
@@ -36,5 +36,16 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: colors.background,
+  },
+  date: {
+    fontWeight: '600',
+    fontSize: 18,
+    alignSelf: 'center',
+    marginBottom: 10,
+  },
+  section_title: {
+    fontWeight: '600',
+    fontSize: 16,
+    paddingVertical: 10,
   },
 });

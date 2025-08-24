@@ -17,15 +17,15 @@ export const MenuCard = ({ item }: { item: Day }) => {
       onPress={() => router.push(`/menu-details/${item.date}`)}>
       <View style={styles.dateContainer}>
         <View accessibilityLabel="date">
-          <Text style={styles.date}>{weekday}</Text>
-          <Text style={{ fontSize: 14, color: colors.textSecondary, fontStyle: 'italic' }}>
+          <Text style={styles.day}>{weekday}</Text>
+          <Text style={styles.date}>
             {month} {day}
           </Text>
         </View>
-        <Ionicons name="chevron-forward-outline" size={18} color="#6B7280" />
+        <Ionicons name="chevron-forward-outline" size={18} color={colors.icon} />
       </View>
       {item.menu_items.length === 0 ? (
-        <Text style={{ fontStyle: 'italic' }}>There is currently nothing on the menu today.</Text>
+        <Text style={styles.emptyText}>There is currently nothing on the menu today.</Text>
       ) : (
         item.menu_items.map((item, index) => {
           if (item.is_section_title || item.is_holiday)
@@ -40,7 +40,7 @@ export const MenuCard = ({ item }: { item: Day }) => {
 
           if (!item.food) return null;
           return (
-            <Text key={index} style={{ lineHeight: 20, color: colors.textSecondary }}>
+            <Text key={index} style={styles.item}>
               {item.food.name}
             </Text>
           );
@@ -68,15 +68,27 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 8,
   },
-  date: {
+  day: {
     fontWeight: '600',
     fontSize: 18,
     lineHeight: 22,
+    fontStyle: 'italic',
+  },
+  date: {
+    fontSize: 14,
+    color: colors.textSecondary,
     fontStyle: 'italic',
   },
   section_title: {
     fontWeight: '600',
     fontSize: 14,
     marginTop: 8,
+  },
+  emptyText: {
+    fontStyle: 'italic',
+  },
+  item: {
+    lineHeight: 20,
+    color: colors.textSecondary,
   },
 });

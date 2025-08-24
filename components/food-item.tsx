@@ -6,7 +6,7 @@ import { colors } from '@/styles';
 export const FoodItem = ({ item }: { item: MenuItem }) => {
   if (!item.food) return null;
   return (
-    <View accessible={true} style={[styles.card, styles.cardPadding]}>
+    <View accessible={true} style={[styles.card]}>
       <View style={styles.headerRow}>
         <Text style={styles.foodName} accessibilityLabel="food name">
           {item.food.name}
@@ -39,16 +39,13 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.card,
     padding: 16,
-    marginBottom: 20,
+    marginBottom: 12,
     borderRadius: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
-  },
-  cardPadding: {
-    paddingBottom: 20,
   },
   headerRow: {
     flexDirection: 'row',
@@ -69,7 +66,7 @@ const styles = StyleSheet.create({
   caloriesText: {
     fontWeight: 'bold',
     fontSize: 12,
-    color: 'white',
+    color: colors.buttonText,
   },
   description: {
     paddingBottom: 8,

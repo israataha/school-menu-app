@@ -10,7 +10,7 @@ export const ErrorState = ({ message, onRetry }: { message: string; onRetry?: ()
       <Text style={styles.message}>{message}</Text>
       {onRetry && (
         <Pressable accessibilityRole="button" onPress={onRetry} style={styles.retryButton}>
-          <Ionicons name="refresh-outline" size={24} color="white" />
+          <Ionicons name="refresh-outline" size={24} color={colors.buttonIcon} />
           <Text style={styles.retryText}>Try Again</Text>
         </Pressable>
       )}
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: '600',
-    color: '#1F2937',
+    color: colors.text,
     textAlign: 'center',
   },
   message: {
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   retryText: {
-    color: 'white',
+    color: colors.buttonText,
     fontSize: 16,
     fontWeight: '600',
   },
