@@ -1,9 +1,9 @@
+import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { Day } from '@/api/types';
-
-import { Icon } from './icon';
+import { formatDate } from '@/utils';
 
 export const MenuCard = ({ item }: { item: Day }) => {
   return (
@@ -13,14 +13,10 @@ export const MenuCard = ({ item }: { item: Day }) => {
       style={styles.card}
       onPress={() => router.push(`/detail/${item.date}`)}>
       <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-        <Text style={styles.date}>
-          {new Date(`${item.date}T00:00:00.000`).toLocaleDateString('en-US', {
-            weekday: 'short',
-            month: 'short',
-            day: 'numeric',
-          })}
+        <Text accessibilityLabel="date" style={styles.date}>
+          {formatDate(item.date)}
         </Text>
-        <Icon type="Ionicons" name="chevron-forward-outline" size={18} color="black" />
+        <Ionicons name="chevron-forward-outline" size={18} color="black" />
       </View>
       {item.menu_items.length === 0 ? (
         <Text style={{ fontStyle: 'italic' }}>There is currently nothing on the menu today.</Text>
@@ -28,7 +24,10 @@ export const MenuCard = ({ item }: { item: Day }) => {
         item.menu_items.map((item, index) => {
           if (item.is_section_title || item.is_holiday)
             return (
-              <Text key={index} style={styles.section_title}>
+              <Text
+                accessibilityLabel={item.is_section_title ? 'section title' : 'holiday'}
+                key={index}
+                style={styles.section_title}>
                 {item.text}
               </Text>
             );

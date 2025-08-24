@@ -1,11 +1,11 @@
 import { renderHook, waitFor } from '@testing-library/react-native';
 import { http, HttpResponse } from 'msw';
 
+import { createWrapper, testQueryClient } from '@/app/__tests__/utils';
 import { menu_data } from '@/test/mock-data';
 import { server } from '@/test/setup';
-import { createWrapper, testQueryClient } from '@/test/utils';
 
-import { useFetchMenu, useMenuData } from './menu';
+import { useFetchMenu, useMenuData } from '../menu';
 describe('useFetchMenu', () => {
   it('should fetch menu data', async () => {
     const { result } = renderHook(() => useFetchMenu(new Date('2025-09-01')), { wrapper: createWrapper() });

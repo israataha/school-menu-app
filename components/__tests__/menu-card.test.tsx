@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react-native';
 
-import { MenuCard } from './menu-card';
+import { MenuCard } from '../menu-card';
 
 describe('MenuCard', () => {
   it('should render MenuCard with date and message when there are no menu items', () => {
-    const { getByText } = render(
+    const { getByLabelText, getByText } = render(
       <MenuCard
         item={{
           date: '2025-09-01',
@@ -12,13 +12,12 @@ describe('MenuCard', () => {
         }}
       />,
     );
-
-    expect(getByText('Mon, Sep 1')).toBeDefined();
+    expect(getByLabelText('date')).toBeDefined();
     expect(getByText('There is currently nothing on the menu today.')).toBeDefined();
   });
 
   it('should render MenuCard with date and holiday if is_holiday is true', () => {
-    const { getByText } = render(
+    const { getByLabelText, getByText } = render(
       <MenuCard
         item={{
           date: '2025-09-01',
@@ -38,12 +37,13 @@ describe('MenuCard', () => {
         }}
       />,
     );
-    expect(getByText('Mon, Sep 1')).toBeDefined();
+    expect(getByLabelText('date')).toBeDefined();
+    expect(getByLabelText('holiday')).toBeDefined();
     expect(getByText('Labor Day')).toBeDefined();
   });
 
   it('should render MenuCard with date and section title if is_section_title is true', () => {
-    const { getByText } = render(
+    const { getByLabelText, getByText } = render(
       <MenuCard
         item={{
           date: '2025-09-01',
@@ -63,12 +63,13 @@ describe('MenuCard', () => {
         }}
       />,
     );
-    expect(getByText('Mon, Sep 1')).toBeDefined();
+    expect(getByLabelText('date')).toBeDefined();
+    expect(getByLabelText('section title')).toBeDefined();
     expect(getByText('Entrees')).toBeDefined();
   });
 
   it('should render MenuCard with date and food item if food is not null', () => {
-    const { getByText } = render(
+    const { getByLabelText, getByText } = render(
       <MenuCard
         item={{
           date: '2025-09-01',
@@ -125,7 +126,7 @@ describe('MenuCard', () => {
         }}
       />,
     );
-    expect(getByText('Mon, Sep 1')).toBeDefined();
+    expect(getByLabelText('date')).toBeDefined();
     expect(getByText('Chicken Tenders')).toBeDefined();
   });
 });

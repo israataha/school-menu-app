@@ -1,20 +1,11 @@
 import { fireEvent, waitFor } from '@testing-library/react-native';
 import { http, HttpResponse } from 'msw';
 
+import { renderWithClient } from '@/app/__tests__/utils';
 import { empty_menu_data } from '@/test/mock-data';
 import { server } from '@/test/setup';
-import { renderWithClient } from '@/test/utils';
 
-import Index from '../app/index';
-
-jest.mock('expo-router', () => ({
-  router: { push: jest.fn() },
-  useRouter: () => ({
-    push: jest.fn(),
-    replace: jest.fn(),
-    // ... mock other router methods as needed
-  }),
-}));
+import Index from '../index';
 
 // const mockUseRouter = useRouter as jest.MockedFunction<typeof useRouter>;
 
@@ -22,7 +13,7 @@ describe('index', () => {
   it('should render loading state initially when fetching menu data', async () => {
     const { getByText } = renderWithClient(<Index />);
 
-    expect(getByText('Loading...')).toBeDefined();
+    expect(getByText("Loading this week's menu")).toBeDefined();
   });
 
   it('should render error message when when there is an error fetching menu data', async () => {

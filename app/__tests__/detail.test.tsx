@@ -1,9 +1,9 @@
 import { useLocalSearchParams } from 'expo-router';
 
 import { useMenuData } from '@/api/menu';
+import { renderWithClient } from '@/app/__tests__/utils';
 import Detail from '@/app/detail/[date]';
 import { menu_data } from '@/test/mock-data';
-import { renderWithClient } from '@/test/utils';
 
 jest.mock('expo-router', () => ({
   useLocalSearchParams: jest.fn(),
