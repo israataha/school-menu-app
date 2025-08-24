@@ -2,6 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { ScrollView, Text } from 'react-native';
 
 import { FoodItem } from '@/components/food-item';
+import { formatDate } from '@/utils';
 
 import { useMenuData } from '../../api/menu';
 
@@ -13,11 +14,7 @@ export default function Detail() {
   return (
     <ScrollView style={{ padding: 20 }}>
       <Text style={{ fontWeight: '600', fontSize: 20, alignSelf: 'center' }}>
-        {new Date(`${date}T00:00:00.000`).toLocaleDateString('en-US', {
-          weekday: 'long',
-          month: 'short',
-          day: 'numeric',
-        })}
+        {formatDate(date, { weekday: 'long', month: 'short', day: 'numeric' })}
       </Text>
       {data?.menu_items.map((item, index) => {
         if (item.is_section_title || item.is_holiday)

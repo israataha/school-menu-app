@@ -19,11 +19,11 @@ export default function Index() {
         keyExtractor={item => item.date}
         refreshing={isRefetching}
         onRefresh={refetch}
-        // ListHeaderComponent={
-        //   <Text style={{ fontWeight: '600', fontSize: 16, marginBottom: 8, alignSelf: 'center' }}>
-        //     Week of Aug 25 - Aug 31
-        //   </Text>
-        // }
+        ListHeaderComponent={
+          <Text style={{ fontWeight: '600', fontSize: 16, marginBottom: 8, alignSelf: 'center' }}>
+            {"This week's menu"}
+          </Text>
+        }
       />
     </View>
   );
