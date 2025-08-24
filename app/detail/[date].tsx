@@ -5,11 +5,11 @@ import { FoodItem } from '@/components/food-item';
 import { colors } from '@/styles';
 import { formatDate } from '@/utils';
 
-import { useMenuData } from '../../api/menu';
+import { useMenuDetails } from '../../api';
 
 export default function Detail() {
   const { date } = useLocalSearchParams<{ date: string }>();
-  const data = useMenuData('2025-08-26');
+  const data = useMenuDetails('2025-08-26');
   const { weekday, month, day } = formatDate(date, { month: 'short' });
 
   return (

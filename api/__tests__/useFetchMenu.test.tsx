@@ -1,11 +1,10 @@
 import { renderHook, waitFor } from '@testing-library/react-native';
 import { http, HttpResponse } from 'msw';
 
-import { createWrapper, testQueryClient } from '@/app/__tests__/utils';
-import { menu_data } from '@/test/mock-data';
+import { createWrapper } from '@/app/__tests__/utils';
 import { server } from '@/test/setup';
 
-import { useFetchMenu, useMenuData } from '../menu';
+import { useFetchMenu } from '../useFetchMenu';
 describe('useFetchMenu', () => {
   it('should fetch menu data', async () => {
     const { result } = renderHook(() => useFetchMenu(new Date('2025-09-01')), { wrapper: createWrapper() });
@@ -44,20 +43,5 @@ describe('useFetchMenu', () => {
     expect(days?.some(day => day.date === '2025-09-04')).toBe(true);
     expect(days?.some(day => day.date === '2025-09-05')).toBe(true);
     expect(days?.some(day => day.date === '2025-09-06')).toBe(false);
-  });
-});
-
-describe('useMenuData', () => {
-  it('should return data', async () => {
-    testQueryClient.setQueryData(['menu', '2025-09-01'], menu_data);
-    const { result } = renderHook(() => useMenuData('2025-09-01'), { wrapper: createWrapper() });
-
-    await waitFor(() => expect(result.current).toBeDefined());
-  });
-
-  it('should return null if there is no data for that date', async () => {
-    const { result } = renderHook(() => useMenuData('2025-09-10'), { wrapper: createWrapper() });
-
-    await waitFor(() => expect(result.current).toBeUndefined());
   });
 });

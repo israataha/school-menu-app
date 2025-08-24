@@ -1,4 +1,4 @@
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { Day, Menu } from './types';
 
@@ -10,6 +10,7 @@ export function useFetchMenu(date: Date) {
     queryFn: async () => {
       const response = await fetch(`${MENU_URL}/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}/`);
       return await response.json();
+      //throw new Error('Failed to fetch menu data');
     },
     // https://tanstack.com/query/v5/docs/framework/react/guides/render-optimizations#select
     select: (data: Menu) => ({
@@ -18,9 +19,3 @@ export function useFetchMenu(date: Date) {
     }),
   });
 }
-
-export const useMenuData = (date: string) => {
-  const queryClient = useQueryClient();
-  const data = queryClient.getQueryData<Menu>(['menu', date])?.days.find(day => day.date === date);
-  return data;
-};
