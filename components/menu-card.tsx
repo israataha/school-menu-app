@@ -3,6 +3,7 @@ import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import type { Day } from '@/api/types';
+import { MESSAGES } from '@/constants/messages';
 import { colors } from '@/styles';
 import { formatDate } from '@/utils';
 
@@ -25,7 +26,7 @@ export const MenuCard = ({ item }: { item: Day }) => {
         <Ionicons name="chevron-forward-outline" size={18} color={colors.icon} />
       </View>
       {item.menu_items.length === 0 ? (
-        <Text style={styles.emptyText}>There is currently nothing on the menu today.</Text>
+        <Text style={styles.emptyText}>{MESSAGES.EMPTY_STATES.NO_MENU_TODAY}</Text>
       ) : (
         item.menu_items.map((item, index) => {
           if (item.is_section_title || item.is_holiday)

@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import { MenuItem } from '@/api/types';
+import { MESSAGES } from '@/constants/messages';
 import { colors } from '@/styles';
 
 export const FoodItem = ({ item }: { item: MenuItem }) => {
@@ -13,7 +14,7 @@ export const FoodItem = ({ item }: { item: MenuItem }) => {
         </Text>
         <View style={styles.caloriesBadge}>
           <Text style={styles.caloriesText} accessibilityLabel="calories">
-            {item.food.rounded_nutrition_info.calories} cal{' '}
+            {item.food.rounded_nutrition_info.calories} {MESSAGES.FOOD_LABELS.CALORIES}{' '}
           </Text>
         </View>
       </View>
@@ -24,12 +25,13 @@ export const FoodItem = ({ item }: { item: MenuItem }) => {
       )}
       {item.food.icons.myplate_icons.length > 0 && (
         <Text style={styles.myplateIcons} accessibilityLabel="allergens">
-          Contains: {item.food.icons.myplate_icons.map(icon => icon.name).join(', ')}
+          {MESSAGES.FOOD_LABELS.CONTAINS} {item.food.icons.myplate_icons.map(icon => icon.name).join(', ')}
         </Text>
       )}
       <Text style={styles.nutritionInfo} accessibilityLabel="nutrition information">
-        Carbs: {item.food.rounded_nutrition_info.g_carbs} g • Fat: {item.food.rounded_nutrition_info.g_fat} g • Protein:{' '}
-        {item.food.rounded_nutrition_info.g_protein} g
+        {MESSAGES.FOOD_LABELS.CARBS} {item.food.rounded_nutrition_info.g_carbs} {MESSAGES.FOOD_LABELS.GRAMS} •{' '}
+        {MESSAGES.FOOD_LABELS.FAT} {item.food.rounded_nutrition_info.g_fat} {MESSAGES.FOOD_LABELS.GRAMS} •{' '}
+        {MESSAGES.FOOD_LABELS.PROTEIN} {item.food.rounded_nutrition_info.g_protein} {MESSAGES.FOOD_LABELS.GRAMS}
       </Text>
     </View>
   );

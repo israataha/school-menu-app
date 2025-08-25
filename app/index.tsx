@@ -1,6 +1,7 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import { EmptyState, ErrorState, LoadingIndicator, MenuCard } from '@/components';
+import { MESSAGES } from '@/constants/messages';
 import { colors } from '@/styles';
 
 import { useFetchMenu } from '../api';
@@ -8,15 +9,9 @@ import { useFetchMenu } from '../api';
 export default function Index() {
   const { isPending, isError, data, refetch, isRefetching } = useFetchMenu(new Date('2025-08-26'));
 
-  if (isPending) return <LoadingIndicator text={"Loading this week's menu"} />;
+  if (isPending) return <LoadingIndicator text={MESSAGES.LOADING.WEEKLY_MENU} />;
 
-  if (isError)
-    return (
-      <ErrorState
-        message={"Unable to load this week's menu. Please check your connection and try again."}
-        onRetry={refetch}
-      />
-    );
+  if (isError) return <ErrorState message={MESSAGES.ERRORS.UNABLE_TO_LOAD_MENU} onRetry={refetch} />;
 
   return (
     <View style={styles.container}>
@@ -26,8 +21,8 @@ export default function Index() {
         keyExtractor={item => item.date}
         refreshing={isRefetching}
         onRefresh={refetch}
-        ListEmptyComponent={<EmptyState message="No menu available for this week" />}
-        ListHeaderComponent={<Text style={styles.header}>{"This week's menu"}</Text>}
+        ListEmptyComponent={<EmptyState message={MESSAGES.EMPTY_STATES.NO_MENU_AVAILABLE} />}
+        ListHeaderComponent={<Text style={styles.header}>{MESSAGES.MENU.WEEKLY_MENU_HEADER}</Text>}
       />
     </View>
   );

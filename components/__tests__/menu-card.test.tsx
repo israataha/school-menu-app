@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react-native';
 
+import { MESSAGES } from '@/constants/messages';
+
 import { MenuCard } from '../menu-card';
 
 describe('MenuCard', () => {
@@ -13,7 +15,7 @@ describe('MenuCard', () => {
       />,
     );
     expect(getByLabelText('date')).toBeDefined();
-    expect(getByText('There is currently nothing on the menu today.')).toBeDefined();
+    expect(getByText(MESSAGES.EMPTY_STATES.NO_MENU_TODAY)).toBeDefined();
   });
 
   it('should render MenuCard with date and holiday if is_holiday is true', () => {

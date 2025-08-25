@@ -2,6 +2,7 @@ import { screen, waitFor } from '@testing-library/react-native';
 import { http, HttpResponse } from 'msw';
 
 import { renderWithClient } from '@/app/__tests__/utils';
+import { MESSAGES } from '@/constants/messages';
 import { empty_menu_data } from '@/test/mock-data';
 import { server } from '@/test/setup';
 
@@ -13,7 +14,7 @@ describe('index', () => {
   it('should render loading state initially when fetching menu data', async () => {
     const { getByText } = renderWithClient(<Index />);
 
-    expect(getByText("Loading this week's menu")).toBeDefined();
+    expect(getByText(MESSAGES.LOADING.WEEKLY_MENU)).toBeDefined();
   });
 
   it('should render error message when when there is an error fetching menu data', async () => {
@@ -37,7 +38,7 @@ describe('index', () => {
 
     const { getByText } = renderWithClient(<Index />);
 
-    await waitFor(() => expect(getByText('No menu available for this week')).toBeDefined());
+    await waitFor(() => expect(getByText(MESSAGES.EMPTY_STATES.NO_MENU_AVAILABLE)).toBeDefined());
 
     expect(screen.queryByLabelText('date')).toBeNull();
   });
@@ -45,7 +46,7 @@ describe('index', () => {
   it('should render list of menu items', async () => {
     const { getByText, getAllByLabelText } = renderWithClient(<Index />);
 
-    await waitFor(() => expect(getByText("This week's menu")).toBeDefined());
+    await waitFor(() => expect(getByText(MESSAGES.MENU.WEEKLY_MENU_HEADER)).toBeDefined());
 
     expect(getAllByLabelText('date')).toHaveLength(5);
   });

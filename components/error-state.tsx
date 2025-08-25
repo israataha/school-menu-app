@@ -1,17 +1,18 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { MESSAGES } from '@/constants/messages';
 import { colors } from '@/styles';
 
 export const ErrorState = ({ message, onRetry }: { message: string; onRetry?: () => void }) => {
   return (
     <View accessibilityLabel="error" style={styles.container}>
-      <Text style={styles.title}>Oops! Something went wrong</Text>
+      <Text style={styles.title}>{MESSAGES.ERRORS.TITLE}</Text>
       <Text style={styles.message}>{message}</Text>
       {onRetry && (
         <Pressable accessibilityRole="button" onPress={onRetry} style={styles.retryButton}>
           <Ionicons name="refresh-outline" size={24} color={colors.buttonIcon} />
-          <Text style={styles.retryText}>Try Again</Text>
+          <Text style={styles.retryText}>{MESSAGES.ERRORS.TRY_AGAIN}</Text>
         </Pressable>
       )}
     </View>

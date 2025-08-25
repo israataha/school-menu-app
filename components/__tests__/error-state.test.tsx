@@ -1,27 +1,32 @@
 import { fireEvent, render, screen } from '@testing-library/react-native';
 
+import { MESSAGES } from '@/constants/messages';
+
 import { ErrorState } from '../error-state';
 
 describe('ErrorState', () => {
   it('should render error state with text', () => {
-    const { getByText } = render(<ErrorState message="Server error" />);
+    const message = 'Server error';
+    const { getByText } = render(<ErrorState message={message} />);
 
-    expect(getByText('Server error')).toBeDefined();
-    expect(screen.queryByText('Try Again')).toBeNull();
+    expect(getByText(message)).toBeDefined();
+    expect(screen.queryByText(MESSAGES.ERRORS.TRY_AGAIN)).toBeNull();
   });
 
   it('should render error state with text and retry button', () => {
-    const { getByText } = render(<ErrorState message="Server error" onRetry={() => {}} />);
+    const message = 'Server error';
+    const { getByText } = render(<ErrorState message={message} onRetry={() => {}} />);
 
-    expect(getByText('Server error')).toBeDefined();
-    expect(getByText('Try Again')).toBeDefined();
+    expect(getByText(message)).toBeDefined();
+    expect(getByText(MESSAGES.ERRORS.TRY_AGAIN)).toBeDefined();
   });
 
   it('should call onRetry when retry button is pressed', () => {
+    const message = 'Server error';
     const onRetry = jest.fn();
-    const { getByText } = render(<ErrorState message="Server error" onRetry={onRetry} />);
+    const { getByText } = render(<ErrorState message={message} onRetry={onRetry} />);
 
-    fireEvent.press(getByText('Try Again'));
+    fireEvent.press(getByText(MESSAGES.ERRORS.TRY_AGAIN));
 
     expect(onRetry).toHaveBeenCalled();
   });
