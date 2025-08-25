@@ -1,23 +1,26 @@
 import { useLocalSearchParams } from 'expo-router';
 import { ScrollView, StyleSheet, Text } from 'react-native';
 
-import { FoodItem } from '@/components/food-item';
+import { ErrorState, FoodItem } from '@/components';
 import { colors } from '@/styles';
 import { formatDate } from '@/utils';
 
 import { useMenuDetails } from '../api';
+import { MESSAGES } from '../constants/messages';
 
 export default function MenuDetails() {
   const { date, currentDate } = useLocalSearchParams<{ date: string; currentDate: string }>();
   const { weekday, month, day } = formatDate(date, { month: 'short' });
   const data = useMenuDetails(currentDate, date);
 
+  if (!data) return <ErrorState message={MESSAGES.ERRORS.UNABLE_TO_LOAD_MENU_DETAILS} />;
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.date}>
         {weekday}, {month} {day}
       </Text>
-      {data?.menu_items.map((item, index) => {
+      {data.menu_items.map((item, index) => {
         if (item.is_section_title || item.is_holiday)
           return (
             <Text key={index} style={styles.section_title}>

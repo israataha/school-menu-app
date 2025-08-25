@@ -11,6 +11,7 @@ export const MESSAGES = {
     TITLE: 'Oops! Something went wrong',
     TRY_AGAIN: 'Try Again',
     UNABLE_TO_LOAD_MENU: "Unable to load this week's menu. Please check your connection and try again.",
+    UNABLE_TO_LOAD_MENU_DETAILS: 'Unable to load menu details for this date.',
   },
 
   EMPTY_STATES: {
