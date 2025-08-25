@@ -1,5 +1,19 @@
 import { MenuItem } from '@/api/types';
 
+/*
+ * Returns a date string in the format YYYY-MM-DD
+ */
+export const getDateString = (date: Date) => {
+  return date.toISOString().split('T')[0];
+};
+
+/*
+ * Converts a date string to an object containing different parts of the date
+ * weekday: The day of the week
+ * month: The month of the year
+ * day: The day of the month
+ * year: The year
+ */
 export const formatDate = (dateString: string, options?: Intl.DateTimeFormatOptions) => {
   const date = new Date(`${dateString}T00:00:00.000`);
 

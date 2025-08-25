@@ -8,6 +8,7 @@ describe('MenuCard', () => {
   it('should render MenuCard with date and message when there are no menu items', () => {
     const { getByLabelText, getByText } = render(
       <MenuCard
+        currentDate={'2025-09-01'}
         item={{
           date: '2025-09-01',
           menu_items: [],
@@ -21,6 +22,7 @@ describe('MenuCard', () => {
   it('should render MenuCard with date and holiday if is_holiday is true', () => {
     const { getByLabelText, getByText } = render(
       <MenuCard
+        currentDate={'2025-09-01'}
         item={{
           date: '2025-09-01',
           menu_items: [
@@ -47,6 +49,7 @@ describe('MenuCard', () => {
   it('should render MenuCard with date and section title if is_section_title is true', () => {
     const { getByLabelText, getByText } = render(
       <MenuCard
+        currentDate={'2025-09-01'}
         item={{
           date: '2025-09-01',
           menu_items: [
@@ -73,6 +76,7 @@ describe('MenuCard', () => {
   it('should render MenuCard with date and food item if food is not null', () => {
     const { getByLabelText, getByText } = render(
       <MenuCard
+        currentDate={'2025-09-01'}
         item={{
           date: '2025-09-01',
           menu_items: [

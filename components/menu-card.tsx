@@ -7,7 +7,7 @@ import { MESSAGES } from '@/constants/messages';
 import { colors } from '@/styles';
 import { formatDate } from '@/utils';
 
-export const MenuCard = ({ item }: { item: Day }) => {
+export const MenuCard = ({ item, currentDate }: { item: Day; currentDate: string }) => {
   const { weekday, month, day } = formatDate(item.date);
 
   return (
@@ -15,7 +15,12 @@ export const MenuCard = ({ item }: { item: Day }) => {
       accessibilityHint="Navigates to the menu detail page"
       testID={`menu-card-${item.date}`}
       style={styles.card}
-      onPress={() => router.push(`/menu-details/${item.date}`)}>
+      onPress={() =>
+        router.push({
+          pathname: `/menu-details`,
+          params: { date: item.date, currentDate: currentDate },
+        })
+      }>
       <View style={styles.dateContainer}>
         <View accessibilityLabel="date">
           <Text style={styles.day}>{weekday}</Text>

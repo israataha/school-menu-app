@@ -11,6 +11,7 @@ jest.mock('expo-router', () => ({
     replace: jest.fn(),
     // ... mock other router methods as needed
   }),
+  useFocusEffect: jest.fn(),
 }));
 
 jest.mock('@expo/vector-icons', () => ({

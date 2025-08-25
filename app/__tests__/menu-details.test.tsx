@@ -2,12 +2,9 @@ import { useLocalSearchParams } from 'expo-router';
 
 import { useMenuDetails } from '@/api/';
 import { renderWithClient } from '@/app/__tests__/utils';
-import Detail from '@/app/menu-details/[date]';
 import { menu_data } from '@/test/mock-data';
 
-jest.mock('expo-router', () => ({
-  useLocalSearchParams: jest.fn(),
-}));
+import MenuDetails from '../menu-details';
 
 jest.mock('@/api', () => ({
   useMenuDetails: jest.fn(),
@@ -24,7 +21,7 @@ describe('detail', () => {
   it('should render detail page', () => {
     mockUseLocalSearchParams.mockReturnValue({ date: '2025-09-02' });
     mockUseMenuDetails.mockReturnValue(menu_data.days.find(day => day.date === '2025-09-02'));
-    const { getByText } = renderWithClient(<Detail />);
+    const { getByText } = renderWithClient(<MenuDetails />);
 
     expect(getByText('Tuesday, Sep 2')).toBeDefined();
     expect(getByText('Pick One Entree')).toBeDefined();
@@ -33,7 +30,7 @@ describe('detail', () => {
   it('should render detail page with holiday', () => {
     mockUseLocalSearchParams.mockReturnValue({ date: '2025-09-01' });
     mockUseMenuDetails.mockReturnValue(menu_data.days.find(day => day.date === '2025-09-01'));
-    const { getByText } = renderWithClient(<Detail />);
+    const { getByText } = renderWithClient(<MenuDetails />);
 
     expect(getByText('Monday, Sep 1')).toBeDefined();
     expect(getByText('Labor Day')).toBeDefined();

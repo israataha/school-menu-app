@@ -5,12 +5,12 @@ import { FoodItem } from '@/components/food-item';
 import { colors } from '@/styles';
 import { formatDate } from '@/utils';
 
-import { useMenuDetails } from '../../api';
+import { useMenuDetails } from '../api';
 
-export default function Detail() {
-  const { date } = useLocalSearchParams<{ date: string }>();
-  const data = useMenuDetails('2025-08-26');
+export default function MenuDetails() {
+  const { date, currentDate } = useLocalSearchParams<{ date: string; currentDate: string }>();
   const { weekday, month, day } = formatDate(date, { month: 'short' });
+  const data = useMenuDetails(currentDate, date);
 
   return (
     <ScrollView style={styles.container}>
