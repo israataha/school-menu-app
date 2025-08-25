@@ -72,7 +72,7 @@
       "!**/.expo/**",
       "!**/app-example/**",
       "!**/test/**",
-      "!**/__tests__/utils.tsx"
+      "!**/styles/**"
     ],
     "preset": "jest-expo",
     "setupFilesAfterEnv": [

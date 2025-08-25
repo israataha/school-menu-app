@@ -1,21 +1,40 @@
 import { MenuItem } from '@/api/types';
 
-/*
- * Returns a date string in the format YYYY-MM-DD
+/**
+ * Returns the date string in YYYY-MM-DD format.
+ *
+ * @param {Date} date The date to format
+ * @returns {string} The date string in YYYY-MM-DD format
+ * @example
+ * getDateString(new Date()) - assuming the current date is August 26, 2025
+ * // Returns '2025-08-26'
  */
 export const getDateString = (date: Date) => {
   return date.toISOString().split('T')[0];
 };
 
-/*
- * Converts a date string to an object containing different parts of the date
- * weekday: The day of the week
- * month: The month of the year
- * day: The day of the month
- * year: The year
+/**
+ * Formats a date string into separate components (weekday, month, day, year).
+ *
+ * @param {string} dateString - The date string to format (should be in a format parseable by Date constructor)
+ * @param {Intl.DateTimeFormatOptions} options - Optional formatting options for date components
+ * @returns {{weekday: string, month: string, day: string, year: string} | null} Object containing formatted date components or null if dateString is empty or invalid
+ * @example
+ * // With no options
+ * formatDate('2025-08-26')
+ * // Returns: { weekday: 'Tuesday', month: 'August', day: '26', year: '2025' }
+ *
+ * @example
+ * // With custom options
+ * formatDate('2025-08-26', { weekday: 'short', month: 'short' })
+ * // Returns: { weekday: 'Tue', month: 'Aug', day: '26', year: '2025' }
  */
 export const formatDate = (dateString: string, options?: Intl.DateTimeFormatOptions) => {
+  if (!dateString || dateString.trim() === '') return null;
+
   const date = new Date(`${dateString}T00:00:00.000`);
+
+  if (date.toString() === 'Invalid Date') return null;
 
   const weekday = date.toLocaleDateString('en-US', {
     weekday: options?.weekday || 'long',

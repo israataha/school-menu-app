@@ -1,8 +1,8 @@
 import { renderHook, waitFor } from '@testing-library/react-native';
 import { http, HttpResponse } from 'msw';
 
-import { createWrapper } from '@/app/__tests__/utils';
 import { server } from '@/test/setup';
+import { createWrapper } from '@/test/utils';
 
 import { useFetchMenu } from '../useFetchMenu';
 describe('useFetchMenu', () => {

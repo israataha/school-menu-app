@@ -7,13 +7,22 @@ import { MESSAGES } from '@/constants/messages';
 import { colors } from '@/styles';
 import { formatDate } from '@/utils';
 
+/**
+ * A MenuCard component that displays the date, menu items, and holiday information for a specific day.
+ * The component uses Expo Router router.push() to navigate to the MenuDetails screen when the card is pressed.
+ *
+ * @param {Day} item the menu item to display
+ * @param {string} currentDate the current date in YYYY-MM-DD format used as queryKey to query cached data
+ * @returns {JSX.Element} the MenuCard component
+ */
 export const MenuCard = ({ item, currentDate }: { item: Day; currentDate: string }) => {
-  const { weekday, month, day } = formatDate(item.date);
+  const result = formatDate(item.date);
+  const dateString = result ? `${result.weekday}, ${result.month} ${result.day}` : item.date;
 
   return (
     <Pressable
       accessibilityRole="link"
-      accessibilityLabel={`Menu card for ${weekday}, ${month} ${day}`}
+      accessibilityLabel={`Menu card for ${item.date}`}
       accessibilityHint="Press to navigate to the menu details page"
       testID={`menu-card-${item.date}`}
       style={styles.card}
@@ -25,10 +34,7 @@ export const MenuCard = ({ item, currentDate }: { item: Day; currentDate: string
       }>
       <View style={styles.dateContainer}>
         <View accessible={true} accessibilityLabel="date">
-          <Text style={styles.day}>{weekday}</Text>
-          <Text style={styles.date}>
-            {month} {day}
-          </Text>
+          <Text style={styles.date}>{dateString}</Text>
         </View>
         <Ionicons
           name="chevron-forward-outline"
@@ -82,15 +88,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginBottom: 8,
   },
-  day: {
-    fontWeight: '600',
-    fontSize: 18,
-    lineHeight: 22,
-    fontStyle: 'italic',
-  },
   date: {
-    fontSize: 14,
-    color: colors.textSecondary,
+    fontWeight: '600',
+    fontSize: 16,
+    lineHeight: 22,
     fontStyle: 'italic',
   },
   section_title: {

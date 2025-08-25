@@ -1,10 +1,10 @@
 import { screen, waitFor } from '@testing-library/react-native';
 import { http, HttpResponse } from 'msw';
 
-import { renderWithClient } from '@/app/__tests__/utils';
 import { MESSAGES } from '@/constants/messages';
 import { empty_menu_data } from '@/test/mock-data';
 import { server } from '@/test/setup';
+import { renderWithClient } from '@/test/utils';
 
 import Index from '../index';
 

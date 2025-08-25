@@ -22,7 +22,7 @@ The School Menu app is a mobile app built with [Expo](https://expo.dev) that dis
 
 ESLint and Prettier are used to enforce consistent code style and maintain code quality.
 
-ESLint rules are defined in the `.eslintrc.js` file and include:
+ESLint rules are defined in the `.eslint.config.js` file and include:
 
 - `react-native/no-unused-styles` to catch any unused styles
 - `simple-import-sort/imports` to sort imports for consistency
@@ -44,13 +44,19 @@ Prettier rules are defined in the `.prettierrc` file.
 - Detail screen displays nutritional ionformation for each menu item including calories, carbs, fat, and protein
 - Users can navigate back to the index screen using the back button
 
-### Future Enhancements
+### Not Yet Implemented
+
+- Full accessibility support and accessibility testing
+- E2E testing for user flows
+- Design System
+
+### Feature Enhancements
 
 - [ ] Ability to change week
 - [ ] Ability to view monthly menu
 - [ ] Ability to change school
-- [ ] Ability to select multiple schools (for parents with children in multiple schools)
-- [ ] Calendar integration to add and display lunches to shared calendars
+- [ ] Ability to select multiple schools (for parents with children in different schools)
+- [ ] Calendar integration to add menu to shared calendars
 - [ ] Dark/light/system theme support
 
 ## Getting started

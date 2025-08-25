@@ -4,6 +4,14 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { MESSAGES } from '@/constants/messages';
 import { colors } from '@/styles';
 
+/**
+ * An ErrorState component that displays the error message and an optional retry button.
+ * The retry button is only displayed if the onRetry function is provided.
+ *
+ * @param {string} message the  error message to display to the user
+ * @param {() => void} onRetry an optional function to call when the retry button is pressed
+ * @returns {JSX.Element} the ErrorState component
+ */
 export const ErrorState = ({ message, onRetry }: { message: string; onRetry?: () => void }) => {
   return (
     <View accessible={true} style={styles.container} accessibilityLabel="error state">

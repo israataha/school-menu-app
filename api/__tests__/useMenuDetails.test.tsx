@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from '@testing-library/react-native';
 
-import { createWrapper, testQueryClient } from '@/app/__tests__/utils';
 import { menu_data } from '@/test/mock-data';
+import { createWrapper, testQueryClient } from '@/test/utils';
 
 import { useMenuDetails } from '../useMenuDetails';
 

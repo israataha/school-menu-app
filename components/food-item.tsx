@@ -4,6 +4,12 @@ import { MenuItem } from '@/api/types';
 import { MESSAGES } from '@/constants/messages';
 import { colors } from '@/styles';
 
+/**
+ * A FoodItem component that displays the name, description, and nutritional information of a menu item.
+ *
+ * @param {MenuItem} item - the menu item to display
+ * @returns {JSX.Element} the FoodItem component
+ */
 export const FoodItem = ({ item }: { item: MenuItem }) => {
   if (!item.food) return null;
   return (

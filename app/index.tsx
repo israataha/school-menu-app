@@ -9,6 +9,12 @@ import { getDateString } from '@/utils';
 
 import { useFetchMenu } from '../api';
 
+/**
+ * Displays the main screen with the menu for the current week.
+ *
+ * @param {Date} initialDate an optional initial date to use as the date to fetch menu data for. Defaults to the current date.
+ * @returns {JSX.Element} The main screen component.
+ */
 export default function Index({ initialDate = new Date() }: { initialDate?: Date }) {
   const [currentDate, setCurrentDate] = useState(initialDate ?? new Date());
 

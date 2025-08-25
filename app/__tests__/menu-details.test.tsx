@@ -1,9 +1,9 @@
 import { useLocalSearchParams } from 'expo-router';
 
 import { useMenuDetails } from '@/api/';
-import { renderWithClient } from '@/app/__tests__/utils';
 import { MESSAGES } from '@/constants/messages';
 import { menu_data } from '@/test/mock-data';
+import { renderWithClient } from '@/test/utils';
 
 import MenuDetails from '../menu-details';
 
