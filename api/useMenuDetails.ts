@@ -1,6 +1,6 @@
 import { useQueryClient } from '@tanstack/react-query';
 
-import { Menu } from './types';
+import type { Menu } from './types';
 
 /**
  * Returns the menu data for a specific date by querying the queryClient

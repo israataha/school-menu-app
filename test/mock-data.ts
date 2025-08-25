@@ -1,4 +1,4 @@
-import { Menu } from '@/api/types';
+import type { Menu } from '@/api';
 
 export const menu_data: Menu = {
   start_date: '2025-09-01',

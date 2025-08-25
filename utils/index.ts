@@ -1,4 +1,4 @@
-import { MenuItem } from '@/api/types';
+import type { MenuItem } from '@/api';
 
 /**
  * Returns the date string in YYYY-MM-DD format.

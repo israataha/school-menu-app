@@ -2,7 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-import type { Day } from '@/api/types';
+import type { Day } from '@/api';
 import { MESSAGES } from '@/constants/messages';
 import { colors } from '@/styles';
 import { formatDate } from '@/utils';

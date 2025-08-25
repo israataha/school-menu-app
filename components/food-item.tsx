@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { MenuItem } from '@/api/types';
+import type { MenuItem } from '@/api';
 import { MESSAGES } from '@/constants/messages';
 import { colors } from '@/styles';
 

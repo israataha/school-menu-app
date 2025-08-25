@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { Day, Menu } from './types';
+import type { Day, Menu } from './types';
 
 const MENU_URL = 'https://dbqschools.api.nutrislice.com/menu/api/weeks/school/eisenhower-elementary/menu-type/lunch';
 
