@@ -12,7 +12,9 @@ export const MenuCard = ({ item, currentDate }: { item: Day; currentDate: string
 
   return (
     <Pressable
-      accessibilityHint="Navigates to the menu detail page"
+      accessibilityRole="link"
+      accessibilityLabel={`Menu card for ${weekday}, ${month} ${day}`}
+      accessibilityHint="Press to navigate to the menu details page"
       testID={`menu-card-${item.date}`}
       style={styles.card}
       onPress={() =>
@@ -22,13 +24,19 @@ export const MenuCard = ({ item, currentDate }: { item: Day; currentDate: string
         })
       }>
       <View style={styles.dateContainer}>
-        <View accessibilityLabel="date">
+        <View accessible={true} accessibilityLabel="date">
           <Text style={styles.day}>{weekday}</Text>
           <Text style={styles.date}>
             {month} {day}
           </Text>
         </View>
-        <Ionicons name="chevron-forward-outline" size={18} color={colors.icon} />
+        <Ionicons
+          name="chevron-forward-outline"
+          size={18}
+          color={colors.icon}
+          accessible={true}
+          accessibilityLabel="forward chevron icon"
+        />
       </View>
       {item.menu_items.length === 0 ? (
         <Text style={styles.emptyText}>{MESSAGES.EMPTY_STATES.NO_MENU_TODAY}</Text>

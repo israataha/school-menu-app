@@ -26,7 +26,7 @@ describe('index', () => {
 
     const { getByLabelText } = renderWithClient(<Index />);
 
-    await waitFor(() => expect(getByLabelText('error')).toBeDefined());
+    await waitFor(() => expect(getByLabelText('error state')).toBeDefined());
   });
 
   it('should render a message when there is no menu data', async () => {

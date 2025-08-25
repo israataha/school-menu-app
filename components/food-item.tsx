@@ -7,14 +7,17 @@ import { colors } from '@/styles';
 export const FoodItem = ({ item }: { item: MenuItem }) => {
   if (!item.food) return null;
   return (
-    <View accessible={true} style={[styles.card]}>
+    <View
+      accessible={true}
+      accessibilityHint="Contains nutritional information and allergens for this food item"
+      style={[styles.card]}>
       <View style={styles.headerRow}>
         <Text style={styles.foodName} accessibilityLabel="food name">
           {item.food.name}
         </Text>
-        <View style={styles.caloriesBadge}>
-          <Text style={styles.caloriesText} accessibilityLabel="calories">
-            {item.food.rounded_nutrition_info.calories} {MESSAGES.FOOD_LABELS.CALORIES}{' '}
+        <View style={styles.caloriesBadge} accessibilityLabel="calories">
+          <Text style={styles.caloriesText}>
+            {item.food.rounded_nutrition_info.calories} {MESSAGES.FOOD_LABELS.CALORIES}
           </Text>
         </View>
       </View>

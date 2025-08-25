@@ -16,14 +16,21 @@ export default function MenuDetails() {
   if (!data) return <ErrorState message={MESSAGES.ERRORS.UNABLE_TO_LOAD_MENU_DETAILS} />;
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.date}>
+    <ScrollView
+      style={styles.container}
+      accessible={true}
+      accessibilityLabel={`Menu details for ${weekday}, ${month} ${day}`}
+      accessibilityHint="Shows detailed food items and nutritional information for the selected day">
+      <Text style={styles.date} accessibilityRole="header">
         {weekday}, {month} {day}
       </Text>
       {data.menu_items.map((item, index) => {
         if (item.is_section_title || item.is_holiday)
           return (
-            <Text key={index} style={styles.section_title}>
+            <Text
+              key={index}
+              style={styles.section_title}
+              accessibilityLabel={item.is_section_title ? 'section title' : 'holiday'}>
               {item.text}
             </Text>
           );

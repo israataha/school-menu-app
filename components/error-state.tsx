@@ -6,12 +6,23 @@ import { colors } from '@/styles';
 
 export const ErrorState = ({ message, onRetry }: { message: string; onRetry?: () => void }) => {
   return (
-    <View accessibilityLabel="error" style={styles.container}>
+    <View accessible={true} style={styles.container} accessibilityLabel="error state">
       <Text style={styles.title}>{MESSAGES.ERRORS.TITLE}</Text>
       <Text style={styles.message}>{message}</Text>
       {onRetry && (
-        <Pressable accessibilityRole="button" onPress={onRetry} style={styles.retryButton}>
-          <Ionicons name="refresh-outline" size={24} color={colors.buttonIcon} />
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Try again"
+          accessibilityHint="Press Try Again button to retry loading the menu"
+          onPress={onRetry}
+          style={styles.retryButton}>
+          <Ionicons
+            name="refresh-outline"
+            size={24}
+            color={colors.buttonIcon}
+            accessible={true}
+            accessibilityLabel="Refresh icon"
+          />
           <Text style={styles.retryText}>{MESSAGES.ERRORS.TRY_AGAIN}</Text>
         </Pressable>
       )}

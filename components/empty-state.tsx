@@ -4,7 +4,7 @@ import { colors } from '@/styles';
 
 export const EmptyState = ({ message }: { message: string }) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} accessible={true}>
       <Text style={styles.message}>{message}</Text>
     </View>
   );

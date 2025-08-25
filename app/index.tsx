@@ -28,7 +28,7 @@ export default function Index({ initialDate = new Date() }: { initialDate?: Date
   if (isError) return <ErrorState message={MESSAGES.ERRORS.UNABLE_TO_LOAD_MENU} onRetry={refetch} />;
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} accessible={true}>
       <FlatList
         data={data.days}
         renderItem={({ item }) => <MenuCard item={item} currentDate={getDateString(currentDate)} />}
@@ -36,7 +36,14 @@ export default function Index({ initialDate = new Date() }: { initialDate?: Date
         refreshing={isRefetching}
         onRefresh={refetch}
         ListEmptyComponent={<EmptyState message={MESSAGES.EMPTY_STATES.NO_MENU_AVAILABLE} />}
-        ListHeaderComponent={<Text style={styles.header}>{MESSAGES.MENU.WEEKLY_MENU_HEADER}</Text>}
+        ListHeaderComponent={
+          <Text style={styles.header} accessible={true} accessibilityRole="header">
+            {MESSAGES.MENU.WEEKLY_MENU_HEADER}
+          </Text>
+        }
+        accessibilityLabel="Weekly lunch menu list"
+        accessibilityHint="Scrollable list of lunch menu for this week"
+        accessibilityRole="list"
       />
     </View>
   );
