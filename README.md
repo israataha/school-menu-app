@@ -44,6 +44,12 @@ Prettier rules are defined in the `.prettierrc` file.
 - Detail screen displays nutritional ionformation for each menu item including calories, carbs, fat, and protein
 - Users can navigate back to the index screen using the back button
 
+### Screenshots
+
+<img src="./assets/screenshots/List%20screen.png" width="200"/>
+<img src="./assets/screenshots/Detail%20screen.png" width="200"/> 
+<img src="./assets/screenshots/Error%20screen.png" width="200"/>
+
 ### Not Yet Implemented
 
 - Full accessibility support and accessibility testing
