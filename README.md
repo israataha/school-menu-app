@@ -128,4 +128,4 @@ To run the tests, run the following command in the terminal:
 npm run test
 ```
 
-This will run the tests in the and generate a coverage report in the `coverage` directory and output a coverage summary in the terminal.
+This will run the tests in the terminal and generate a coverage report in the `coverage` directory and output a coverage summary in the terminal.
