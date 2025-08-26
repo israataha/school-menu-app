@@ -22,8 +22,9 @@ export default function MenuDetails() {
 
   if (!data) return <ErrorState message={MESSAGES.ERRORS.UNABLE_TO_LOAD_MENU_DETAILS} />;
 
-  const result = formatDate(date, { month: 'short' });
-  const dateString = result ? `${result.weekday}, ${result.month} ${result.day}` : date;
+  // If the date was not valid, data would have been null or undefined and we would not have reached this point
+  const { weekday, month, day } = formatDate(date, { month: 'short' })!;
+  const dateString = `${weekday}, ${month} ${day}`;
 
   return (
     <ScrollView

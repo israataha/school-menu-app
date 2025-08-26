@@ -8,8 +8,6 @@ import { renderWithClient } from '@/test/utils';
 
 import Index from '../index';
 
-// const mockUseRouter = useRouter as jest.MockedFunction<typeof useRouter>;
-
 describe('index', () => {
   it('should render loading state initially when fetching menu data', async () => {
     const { getByText } = renderWithClient(<Index />);

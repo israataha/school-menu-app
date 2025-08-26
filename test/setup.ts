@@ -4,12 +4,12 @@ import { setupServer } from 'msw/node';
 import { menu_data } from './mock-data';
 import { testQueryClient } from './utils';
 
+export const mockPush = jest.fn();
+
 jest.mock('expo-router', () => ({
-  router: { push: jest.fn() },
+  router: { push: mockPush },
   useRouter: () => ({
-    push: jest.fn(),
-    replace: jest.fn(),
-    // ... mock other router methods as needed
+    push: mockPush,
   }),
   useFocusEffect: jest.fn(),
   useLocalSearchParams: jest.fn(),

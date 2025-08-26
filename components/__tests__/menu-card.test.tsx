@@ -1,6 +1,8 @@
-import { render } from '@testing-library/react-native';
+import { fireEvent, render } from '@testing-library/react-native';
 
 import { MESSAGES } from '@/constants/messages';
+import { menu_data } from '@/test/mock-data';
+import { mockPush } from '@/test/setup';
 
 import { MenuCard } from '../menu-card';
 
@@ -134,5 +136,30 @@ describe('MenuCard', () => {
     );
     expect(getByLabelText('date')).toBeDefined();
     expect(getByText('Chicken Tenders')).toBeDefined();
+  });
+
+  it('should navigate to the MenuDetails screen when the card is pressed', () => {
+    const { getByRole } = render(<MenuCard item={menu_data.days[1]} currentDate={'2025-09-01'} />);
+
+    fireEvent.press(getByRole('link'));
+
+    expect(mockPush).toHaveBeenCalledWith({
+      pathname: '/menu-details',
+      params: { date: '2025-09-01', currentDate: '2025-09-01' },
+    });
+  });
+
+  it('should render non formatted date when date is not valid', () => {
+    const { getByLabelText, getByText } = render(
+      <MenuCard
+        item={{
+          date: 'invalid-date',
+          menu_items: [],
+        }}
+        currentDate={'2025-09-01'}
+      />,
+    );
+    expect(getByLabelText('date')).toBeDefined();
+    expect(getByText('invalid-date')).toBeDefined();
   });
 });
